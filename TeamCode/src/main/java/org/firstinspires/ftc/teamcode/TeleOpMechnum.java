@@ -49,8 +49,8 @@ public class TeleOpMechnum extends LinearOpMode {
 //Lift hardware mapping
         liftmotorLeft = hardwareMap.get(DcMotor.class, "liftmotorLeft");
         liftmotorRight = hardwareMap.get(DcMotor.class, "liftmotorRight");
-        liftmotorLeft.setDirection(DcMotor.Direction.FORWARD);
-        liftmotorRight.setDirection(DcMotor.Direction.REVERSE);
+        liftmotorLeft.setDirection(DcMotor.Direction.REVERSE);
+        liftmotorRight.setDirection(DcMotor.Direction.FORWARD);
 
 
         waitForStart();
@@ -115,12 +115,17 @@ public class TeleOpMechnum extends LinearOpMode {
                     liftmotorLeft.setPower(1);
                     liftmotorRight.setPower(1);
                 }
+
+                else if(gamepad2.left_bumper)
+                {
+                    liftmotorLeft.setPower(-1);
+                    liftmotorRight.setPower(-1);
+                }
                 else
                 {
                     liftmotorLeft.setPower(0);
                     liftmotorRight.setPower(0);
                 }
-
             }
 
 
