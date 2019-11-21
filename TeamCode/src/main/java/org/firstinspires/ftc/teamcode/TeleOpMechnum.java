@@ -103,12 +103,22 @@ public class TeleOpMechnum extends LinearOpMode {
                     intakeMotor1.setPower(1);
                     intakeMotor2.setPower(1);
                 }
+                else
+                {
+                    intakeMotor1.setPower(0);
+                    intakeMotor2.setPower(0);
+                }
 
                 //lift system controlled here
                 if(gamepad2.left_trigger !=0)
                 {
                     liftmotorLeft.setPower(1);
                     liftmotorRight.setPower(1);
+                }
+                else
+                {
+                    liftmotorLeft.setPower(0);
+                    liftmotorRight.setPower(0);
                 }
 
             }
