@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 import java.lang.*;
 
 //11248 //Cougars Property >:D
@@ -16,6 +18,7 @@ public class TeleOpMechnum extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotor1, intakeMotor2, liftmotorLeft, liftmotorRight;
+    private Servo iHold, fGrab1, fGrab2, claw, fBar1, fbar2;
     //right trigger up
     //left trigger down
 
@@ -32,8 +35,6 @@ public class TeleOpMechnum extends LinearOpMode {
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         leftFront.setDirection(DcMotor.Direction.FORWARD);
-
-        
         rightFront.setDirection(DcMotor.Direction.REVERSE);
         leftRear = hardwareMap.get(DcMotor.class, "leftRear");
         rightRear = hardwareMap.get(DcMotor.class, "rightRear");
@@ -51,6 +52,15 @@ public class TeleOpMechnum extends LinearOpMode {
         liftmotorRight = hardwareMap.get(DcMotor.class, "liftmotorRight");
         liftmotorLeft.setDirection(DcMotor.Direction.REVERSE);
         liftmotorRight.setDirection(DcMotor.Direction.FORWARD);
+
+        //Servo hardware mapping
+        iHold = hardwareMap.get(Servo.class, "iHold");
+        fGrab1 = hardwareMap.get(Servo.class, "fGrab1");
+        fGrab2 = hardwareMap.get(Servo.class, "fGrab2");
+        claw = hardwareMap.get(Servo.class, "claw");
+        fBar1 = hardwareMap.get(Servo.class, "fBar1");
+        fbar2 = hardwareMap.get(Servo.class, "fBar2");
+
 
 
         waitForStart();
@@ -126,6 +136,20 @@ public class TeleOpMechnum extends LinearOpMode {
                     liftmotorLeft.setPower(0);
                     liftmotorRight.setPower(0);
                 }
+
+                if(gamepad2.y)
+                {
+                    if(iHold.getPosition() != 0)
+                    {
+                        iHold.setPosition(0);
+                    }
+                    else
+                    {
+                        iHold.setPosition(90);
+                    }
+                }
+
+
             }
 
 
