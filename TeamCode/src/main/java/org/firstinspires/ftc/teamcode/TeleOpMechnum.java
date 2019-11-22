@@ -118,6 +118,16 @@ public class TeleOpMechnum extends LinearOpMode {
                     intakeMotor1.setPower(0);
                     intakeMotor2.setPower(0);
                 }
+                if(gamepad2.right_bumper)
+                {
+                    intakeMotor1.setPower(-1);
+                    intakeMotor2.setPower(-1);
+                }
+                else
+                {
+                    intakeMotor1.setPower(0);
+                    intakeMotor2.setPower(0);
+                }
 
                 //lift system controlled here
                 if(gamepad2.left_trigger !=0)
@@ -146,6 +156,21 @@ public class TeleOpMechnum extends LinearOpMode {
                     else
                     {
                         iHold.setPosition(90);
+                    }
+
+                    if(gamepad2.b)
+                    {
+                            fGrab1.setPosition(90);
+                            fGrab2.setPosition(90);
+                        }
+                    if(gamepad2.x)
+                    {
+                        fBar1.setPosition(180);
+                        fbar2.setPosition(180);
+                    }
+                    if(gamepad2.a)
+                    {
+                        claw.setPosition(90);
                     }
                 }
 
