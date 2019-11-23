@@ -18,7 +18,7 @@ public class TeleOpMechnum extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotor1, intakeMotor2, liftmotorLeft, liftmotorRight;
-    private Servo iHold, fGrab1, fGrab2, claw, fBar1, fbar2;
+    private Servo iHold, fGrab1, fGrab2, claw, fBar1, fBar2;
     //right trigger up
     //left trigger down
 
@@ -47,7 +47,7 @@ public class TeleOpMechnum extends LinearOpMode {
         intakeMotor1.setDirection(DcMotor.Direction.REVERSE);
         intakeMotor2.setDirection(DcMotor.Direction.FORWARD);
 
-//Lift hardware mapping
+        //Lift hardware mapping
         liftmotorLeft = hardwareMap.get(DcMotor.class, "liftmotorLeft");
         liftmotorRight = hardwareMap.get(DcMotor.class, "liftmotorRight");
         liftmotorLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -59,7 +59,7 @@ public class TeleOpMechnum extends LinearOpMode {
         fGrab2 = hardwareMap.get(Servo.class, "fGrab2");
         claw = hardwareMap.get(Servo.class, "claw");
         fBar1 = hardwareMap.get(Servo.class, "fBar1");
-        fbar2 = hardwareMap.get(Servo.class, "fBar2");
+        fBar2 = hardwareMap.get(Servo.class, "fBar2");
 
 
 
@@ -106,19 +106,14 @@ public class TeleOpMechnum extends LinearOpMode {
                 leftRear.setPower(-gamepad1.right_stick_x);
                 rightFront.setPower(-gamepad1.right_stick_x);
                 rightRear.setPower(gamepad1.right_stick_x);
-
+            }
               //intake system is controlled here
                 if(gamepad2.right_trigger !=0)
                 {
                     intakeMotor1.setPower(1);
                     intakeMotor2.setPower(1);
                 }
-                else
-                {
-                    intakeMotor1.setPower(0);
-                    intakeMotor2.setPower(0);
-                }
-                if(gamepad2.right_bumper)
+                else if(gamepad2.right_bumper)
                 {
                     intakeMotor1.setPower(-1);
                     intakeMotor2.setPower(-1);
@@ -147,35 +142,57 @@ public class TeleOpMechnum extends LinearOpMode {
                     liftmotorRight.setPower(0);
                 }
 
-                if(gamepad2.y)
-                {
-                    if(iHold.getPosition() != 0)
-                    {
+                if(gamepad2.y) {
+                    if (iHold.getPosition() != 0) {
                         iHold.setPosition(0);
+                    } else {
+                        iHold.setPosition(45);
                     }
-                    else
-                    {
-                        iHold.setPosition(90);
-                    }
+                    sleep(200);
+                }
+                    if(gamepad2.b) {
 
-                    if(gamepad2.b)
-                    {
-                            fGrab1.setPosition(90);
-                            fGrab2.setPosition(90);
+                        if (fGrab1.getPosition() != 0 || fGrab2.getPosition() != 0) {
+                            fGrab1.setPosition(0);
+                            fGrab2.setPosition(0);
                         }
+                        else
+                        {
+                            fGrab1.setPosition(-90);
+                            fGrab2.setPosition(-90);
+                        }
+                        sleep(200);
+                    }
                     if(gamepad2.x)
                     {
-                        fBar1.setPosition(180);
-                        fbar2.setPosition(180);
+//                        if (fBar1.getPosition() != -5 || fBar2.getPosition() != 0)
+//                        {
+//                            fBar1.setPosition(-5);
+//                            fBar2.setPosition(0);
+//                        }
+//                        else {
+//                            fBar1.setPosition(-5);
+//                            fBar2.setPosition(0);
+//                        }
+                        fBar1.setPosition(fBar1.getPosition()+2);
+                        fBar2.setPosition(fBar2.getPosition()-2);
+                        sleep(200);
                     }
                     if(gamepad2.a)
                     {
-                        claw.setPosition(90);
+                        if (claw.getPosition() !=0)
+                        {
+                            claw.setPosition(0);
+                        }
+                        else {
+                            claw.setPosition(90);
+                        }
+                        sleep(200);
                     }
-                }
 
 
-            }
+
+
 
 
 
