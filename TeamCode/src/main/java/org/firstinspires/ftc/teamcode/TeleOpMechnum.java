@@ -174,7 +174,7 @@ public class TeleOpMechnum extends LinearOpMode {
 //                            fBar1.setPosition(-5);
 //                            fBar2.setPosition(0);
 //                        }
-                        fBar1.setPosition(fBar1.getPosition()+2);
+                        fBar1.setPosition(fBar1.getPosition()+2 );
                         fBar2.setPosition(fBar2.getPosition()-2);
                         sleep(200);
                     }
