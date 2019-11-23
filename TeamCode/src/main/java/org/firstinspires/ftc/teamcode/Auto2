@@ -1,0 +1,60 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+import java.lang.*;
+
+@Autonomous(name = "Auto2", group = "LinearOpMode")
+
+public class Auto2 extends LinearOpMode {
+
+    private ElapsedTime runtime = new ElapsedTime();
+    private DcMotor leftFront, rightFront, leftRear, rightRear;
+    //right trigger up
+    //left trigger down
+
+
+
+    @Override
+    public void runOpMode() {
+
+
+        telemetry.addData("init","init");
+        telemetry.update();
+        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
+        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+        leftRear = hardwareMap.get (DcMotor.class, "leftRear");
+        rightRear = hardwareMap.get (DcMotor.class, "rightRear");
+
+
+
+        waitForStart();
+        while (opModeIsActive()){
+         
+
+                leftFront.setPower(-.8);
+                rightFront.setPower(-.8);
+                leftRear.setPower(.8);
+                rightRear.setPower(.8);
+
+
+
+            }
+
+
+
+
+
+
+
+
+        }
+    }
+
+
+
