@@ -159,12 +159,12 @@ public class TeleOpMechnum extends LinearOpMode {
 
                 // bar movement
                 if(gamepad2.x) {
-                    fBarLeft.setPosition(fBarLeft.getPosition()+.05);
-                    fBarRight.setPosition(fBarRight.getPosition()-.05);
+                    fBarLeft.setPosition(fBarLeft.getPosition()+.035);
+                    fBarRight.setPosition(fBarRight.getPosition()-.035);
                 }
                 if(gamepad2.b) {
-                    fBarLeft.setPosition(fBarLeft.getPosition()-.05);
-                    fBarRight.setPosition(fBarRight.getPosition()+.05);
+                    fBarLeft.setPosition(fBarLeft.getPosition()-.035);
+                    fBarRight.setPosition(fBarRight.getPosition()+.035);
                     sleep(1);
                 }
 
