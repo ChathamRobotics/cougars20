@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HardwareMain
 {
-    /* Public OpMode members. */
+    // Public OpMode members.
     private DcMotor  leftFront      = null;
     private DcMotor  rightFront     = null;
     private DcMotor  leftRear       = null;
@@ -25,22 +25,17 @@ public class HardwareMain
     private Servo  fBarRight    = null;
 
 
-    // public Servo surgicalTubing;
 
-
-//    public Servo markerServo;
-
-
-    /* local OpMode members. */
+    // local OpMode members.
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
 
-    /* Constructor */
+    // Constructor
     public HardwareMain(){
 
     }
 
-    /* Initialize standard Hardware interfaces */
+    // Initialize standard Hardware interfaces
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.Servo;
 import java.lang.*;
@@ -62,11 +63,15 @@ public class TeleOpMechnum extends LinearOpMode {
 
 
 
-        waitForStart();
-        runtime.reset();
+
 
         telemetry.addData("init","init");
         telemetry.update();
+
+        waitForStart();
+        runtime.reset();
+
+
 
         while (opModeIsActive()){
             //turn using gamepad 1 bumpers.
