@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -61,26 +62,30 @@ public class Auto2 extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()){
-         
-
-                leftFront.setPower(-.8);
-                rightFront.setPower(-.8);
-                leftRear.setPower(.8);
-                rightRear.setPower(.8);
 
 
 
+            while (opModeIsActive() && (runtime.seconds() < 2 ))
+            {
+                leftFront.setPower(.25); //Left is forward --> positive
+                rightFront.setPower(.25); //Left is forward --> positive
+                leftRear.setPower(-.25); //Right is reverse --> negative
+                rightRear.setPower(-.25); //Right is reverse --> negative
             }
 
 
 
-
-
-
-
-
         }
+
+
+
+
+
+
+
+
     }
+}
 
 
 
