@@ -15,8 +15,8 @@ import java.lang.*;
 public class Auto2 extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotor1, intakeMotor2, liftmotorLeft, liftmotorRight;
-    private Servo iHold, fGrab1, fGrab2, claw, fBar1, fBar2;
+    private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotorLeft, intakeMotorRight, liftmotorLeft, liftmotorRight;
+    private Servo iHold, fGrabLeft, fGrabRight, claw, fBarLeft, fBarRight;
     //right trigger up
     //left trigger down
 
@@ -28,6 +28,7 @@ public class Auto2 extends LinearOpMode {
 
         telemetry.addData("init","init");
         telemetry.update();
+
         //wheel motors hardware mapping
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
@@ -39,12 +40,12 @@ public class Auto2 extends LinearOpMode {
         rightRear.setDirection(DcMotor.Direction.REVERSE);
 
         //Intake hardware mapping
-        intakeMotor1 = hardwareMap.get(DcMotor.class, "intakeMotor1");
-        intakeMotor2 = hardwareMap.get(DcMotor.class, "intakeMotor2");
-        intakeMotor1.setDirection(DcMotor.Direction.REVERSE);
-        intakeMotor2.setDirection(DcMotor.Direction.FORWARD);
+        intakeMotorLeft = hardwareMap.get(DcMotor.class, "intakeMotorLeft");
+        intakeMotorRight = hardwareMap.get(DcMotor.class, "intakeMotorRight");
+        intakeMotorLeft.setDirection(DcMotor.Direction.FORWARD);
+        intakeMotorRight.setDirection(DcMotor.Direction.REVERSE);
 
-//Lift hardware mapping
+        //Lift hardware mapping
         liftmotorLeft = hardwareMap.get(DcMotor.class, "liftmotorLeft");
         liftmotorRight = hardwareMap.get(DcMotor.class, "liftmotorRight");
         liftmotorLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -52,11 +53,11 @@ public class Auto2 extends LinearOpMode {
 
         //Servo hardware mapping
         iHold = hardwareMap.get(Servo.class, "iHold");
-        fGrab1 = hardwareMap.get(Servo.class, "fGrab1");
-        fGrab2 = hardwareMap.get(Servo.class, "fGrab2");
+        fGrabLeft = hardwareMap.get(Servo.class, "fGrabLeft");
+        fGrabRight = hardwareMap.get(Servo.class, "fGrabRight");
         claw = hardwareMap.get(Servo.class, "claw");
-        fBar1 = hardwareMap.get(Servo.class, "fBar1");
-        fBar2 = hardwareMap.get(Servo.class, "fBar2");
+        fBarLeft = hardwareMap.get(Servo.class, "fBarLeft");
+        fBarRight = hardwareMap.get(Servo.class, "fBarRight");
 
 
 
@@ -64,14 +65,56 @@ public class Auto2 extends LinearOpMode {
         while (opModeIsActive()){
 
 
-
+            //This moves the robot forward a little
+            while (opModeIsActive() && (runtime.seconds() < .2 ))
+            {
+                leftFront.setPower(.25);
+                rightFront.setPower(.25);
+                leftRear.setPower(-.25);
+                rightRear.setPower(-.25);
+            }
+        //This turns the robot
+            while (opModeIsActive() && (runtime.seconds() < 2.2 ))
+            {
+                leftFront.setPower(.8);
+                rightFront.setPower(-.8);
+                leftRear.setPower(.8);
+                rightRear.setPower(-.8);
+            }
+            //This has the robot move forward
             while (opModeIsActive() && (runtime.seconds() < 2 ))
             {
-                leftFront.setPower(.25); //Left is forward --> positive
-                rightFront.setPower(.25); //Left is forward --> positive
-                leftRear.setPower(-.25); //Right is reverse --> negative
-                rightRear.setPower(-.25); //Right is reverse --> negative
+                leftFront.setPower(.25);
+                rightFront.setPower(.25);
+                leftRear.setPower(-.25);
+                rightRear.setPower(-.25);
             }
+            //This has the robot turn and face the plate
+            while (opModeIsActive() && (runtime.seconds() < 2.2 ))
+            {
+                leftFront.setPower(-.8);
+                rightFront.setPower(.8);
+                leftRear.setPower(-.8);
+                rightRear.setPower(.8);
+            }
+            //This has the robot move up and grab the plate
+            while (opModeIsActive() && (runtime.seconds() < 1.5 ))
+            {
+                leftFront.setPower(.25);
+                rightFront.setPower(.25);
+                leftRear.setPower(-.25);
+                rightRear.setPower(-.25);
+            }
+            fGrabLeft.setPosition(0);
+            fGrabRight.setPosition(90);
+            while (opModeIsActive() && (runtime.seconds() < 2.5 ))
+            {
+                leftFront.setPower(-.25);
+                rightFront.setPower(-.25);
+                leftRear.setPower(.25);
+                rightRear.setPower(.25);
+            }
+
 
 
 
