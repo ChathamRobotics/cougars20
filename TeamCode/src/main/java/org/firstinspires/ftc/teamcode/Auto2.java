@@ -93,6 +93,8 @@ public class Auto2 extends LinearOpMode {
             //This has the robot strafe over to the parking zone
             while (opModeIsActive() && (getRuntime() > 5.7 ) && (getRuntime() < 11.7))
             {
+                fGrabLeft.setPosition(90);
+                fGrabRight.setPosition(0);
                 leftFront.setPower(.25);
                 rightFront.setPower(-.25);
                 leftRear.setPower(-.25);
