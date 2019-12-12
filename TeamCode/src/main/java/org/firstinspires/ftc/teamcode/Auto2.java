@@ -69,10 +69,10 @@ public class Auto2 extends LinearOpMode {
             //This has the robot move up and then grab the plate
             while (opModeIsActive() && (getRuntime() < 2.2 ))
             {
-                leftFront.setPower(-.25);
-                rightFront.setPower(-.25);
-                leftRear.setPower(-.25);
-                rightRear.setPower(-.25);
+                leftFront.setPower(-.75);
+                rightFront.setPower(-.75);
+                leftRear.setPower(-.75);
+                rightRear.setPower(-.75);
             }
             while (opModeIsActive() && (getRuntime() > 2.2 ) && (getRuntime() < 3.2))
             {
@@ -85,20 +85,20 @@ public class Auto2 extends LinearOpMode {
             //This has the robot move the plate into the appropriate zone
             while (opModeIsActive() && (getRuntime() > 3.2 ) && (getRuntime() < 5.7))
             {
-                leftFront.setPower(.25);
-                rightFront.setPower(.25);
-                leftRear.setPower(.25);
-                rightRear.setPower(.25);
+                leftFront.setPower(.75);
+                rightFront.setPower(.75);
+                leftRear.setPower(.75);
+                rightRear.setPower(.75);
             }
             //This has the robot strafe over to the parking zone
             while (opModeIsActive() && (getRuntime() > 5.7 ) && (getRuntime() < 11.7))
             {
                 fGrabLeft.setPosition(90);
                 fGrabRight.setPosition(0);
-                leftFront.setPower(.25);
-                rightFront.setPower(-.25);
-                leftRear.setPower(-.25);
-                rightRear.setPower(.25);
+                leftFront.setPower(.75);
+                rightFront.setPower(-.75);
+                leftRear.setPower(-.75);
+                rightRear.setPower(.75);
             }
 
 
