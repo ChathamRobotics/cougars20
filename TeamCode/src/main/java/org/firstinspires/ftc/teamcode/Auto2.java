@@ -67,38 +67,41 @@ public class Auto2 extends LinearOpMode {
 
 
             //This has the robot move up and then grab the plate
-            while (opModeIsActive() && (getRuntime() < 2.2 ))
-            {
-                leftFront.setPower(-.75);
-                rightFront.setPower(-.75);
-                leftRear.setPower(-.75);
-                rightRear.setPower(-.75);
-            }
-            while (opModeIsActive() && (getRuntime() > 2.2 ) && (getRuntime() < 3.2))
+            while (opModeIsActive() && (runtime.seconds() <= 1.65 ))
             {
                 fGrabLeft.setPosition(0);
                 fGrabRight.setPosition(90);
-            }
-
-
-
-            //This has the robot move the plate into the appropriate zone
-            while (opModeIsActive() && (getRuntime() > 3.2 ) && (getRuntime() < 5.7))
-            {
                 leftFront.setPower(.75);
                 rightFront.setPower(.75);
                 leftRear.setPower(.75);
                 rightRear.setPower(.75);
             }
-            //This has the robot strafe over to the parking zone
-            while (opModeIsActive() && (getRuntime() > 5.7 ) && (getRuntime() < 11.7))
+            while (opModeIsActive() && (runtime.seconds() > 1.65 ) && (runtime.seconds() <= 3.2))
             {
                 fGrabLeft.setPosition(90);
                 fGrabRight.setPosition(0);
-                leftFront.setPower(.75);
-                rightFront.setPower(-.75);
-                leftRear.setPower(-.75);
-                rightRear.setPower(.75);
+                leftFront.setPower(0);
+                rightFront.setPower(0);
+                leftRear.setPower(0);
+                rightRear.setPower(0);
+            }
+            //This has the robot move the plate into the appropriate zone
+            while (opModeIsActive() && (runtime.seconds() > 3.2 ) && (runtime.seconds() <= 4.4))
+            {
+                leftFront.setPower(-.5);
+                rightFront.setPower(-.5);
+                leftRear.setPower(-.5);
+                rightRear.setPower(-.5);
+            }
+            //This has the robot strafe over to the parking zone
+            while (opModeIsActive() && (runtime.seconds() > 4.4 ) && (runtime.seconds() <= 11.7))
+            {
+                fGrabLeft.setPosition(0);
+                fGrabRight.setPosition(90);
+                leftFront.setPower(-.5);
+                rightFront.setPower(.5);
+                leftRear.setPower(-.5);
+                rightRear.setPower(.5);
             }
 
 
