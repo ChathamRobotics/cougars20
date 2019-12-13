@@ -67,7 +67,10 @@ public class Auto2 extends LinearOpMode {
 
 
             //This has the robot move up and then grab the plate
-            while (opModeIsActive() && (runtime.seconds() <= 1.65 ))
+
+        ElapsedTime runtime = new ElapsedTime();
+
+            while (opModeIsActive() && (runtime.seconds() <= 0.95 ))
             {
                 fGrabLeft.setPosition(0);
                 fGrabRight.setPosition(90);
@@ -76,27 +79,30 @@ public class Auto2 extends LinearOpMode {
                 leftRear.setPower(.75);
                 rightRear.setPower(.75);
             }
-            while (opModeIsActive() && (runtime.seconds() > 1.65 ) && (runtime.seconds() <= 3))
+            while (opModeIsActive() && (runtime.seconds() > 0.95 ) && (runtime.seconds() <= 3))
             {
-                fGrabLeft.setPosition(90);
-                fGrabRight.setPosition(0);
                 leftFront.setPower(0);
                 rightFront.setPower(0);
                 leftRear.setPower(0);
                 rightRear.setPower(0);
+                sleep(100);
+                fGrabLeft.setPosition(90);
+                fGrabRight.setPosition(0);
+
             }
             //This has the robot move the plate into the appropriate zone
-            while (opModeIsActive() && (runtime.seconds() > 3) && (runtime.seconds() <= 4.65))
+            while (opModeIsActive() && (runtime.seconds() > 3) && (runtime.seconds() <= 4.9))
             {
                 leftFront.setPower(-.5);
                 rightFront.setPower(-.5);
                 leftRear.setPower(-.5);
                 rightRear.setPower(-.5);
             }
-        while (opModeIsActive() && (runtime.seconds() > 4.65 ) && (runtime.seconds() <= 5.65)) {
+        while (opModeIsActive() && (runtime.seconds() > 4.9 ) && (runtime.seconds() <= 5.65)) {
             fGrabLeft.setPosition(0);
             fGrabRight.setPosition(90);
         }
+        /*
             //This has the robot strafe over to the parking zone
             while (opModeIsActive() && (runtime.seconds() > 5.65 ) && (runtime.seconds() <= 10.65))
             {
@@ -105,7 +111,7 @@ public class Auto2 extends LinearOpMode {
                 leftRear.setPower(-1);
                 rightRear.setPower(1);
             }
-
+*/
 
 
 
