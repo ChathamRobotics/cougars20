@@ -154,11 +154,11 @@ public class TeleOpMechnum extends LinearOpMode {
                 }
 
                 //grabber movement
-                if(gamepad2.dpad_up) {
+                if(gamepad2.dpad_down) {
                     fGrabLeft.setPosition(90);
                     fGrabRight.setPosition(0);
                 }
-                if(gamepad2.dpad_down) {
+                if(gamepad2.dpad_up) {
                     fGrabLeft.setPosition(0);
                     fGrabRight.setPosition(90);
                 }
