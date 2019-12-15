@@ -66,84 +66,39 @@ public class Auto2 extends LinearOpMode {
 
 
 
-        //This has the robot move up and then grab the plate
+            //This has the robot move up and then grab the plate
 
         ElapsedTime runtime = new ElapsedTime();
 
-        //move forward for .25 sec and lift grabbers
-        while (opModeIsActive() && (runtime.seconds() <= 0.25 ))
-        {
-            fGrabLeft.setPosition(0);
-            fGrabRight.setPosition(90);
-            leftFront.setPower(.5);
-            rightFront.setPower(.5);
-            leftRear.setPower(.5);
-            rightRear.setPower(.5);
-        }
+            while (opModeIsActive() && (runtime.seconds() <= 0.95 ))
+            {
+                fGrabLeft.setPosition(0);
+                fGrabRight.setPosition(90);
+                leftFront.setPower(.75);
+                rightFront.setPower(.75);
+                leftRear.setPower(.75);
+                rightRear.setPower(.75);
+            }
+            while (opModeIsActive() && (runtime.seconds() > 0.95 ) && (runtime.seconds() <= 3))
+            {
+                leftFront.setPower(0);
+                rightFront.setPower(0);
+                leftRear.setPower(0);
+                rightRear.setPower(0);
+                sleep(100);
+                fGrabLeft.setPosition(90);
+                fGrabRight.setPosition(0);
 
-        //turn right for .25 sec
-        while (opModeIsActive()&&(runtime.seconds() <= 0.5 ))
-        {
-            leftFront.setPower(-.5);
-            rightFront.setPower(.5);
-            leftRear.setPower(-.5);
-            rightRear.setPower(.5);
-        }
-
-        //move forward for .25 sec
-        while (opModeIsActive() && (runtime.seconds() <= 0.75 ))
-        {
-
-            leftFront.setPower(.5);
-            rightFront.setPower(.5);
-            leftRear.setPower(.5);
-            rightRear.setPower(.5);
-        }
-
-        //turn left for .25 sec
-        while (opModeIsActive() && (runtime.seconds() <= 1))
-        {
-
-            leftFront.setPower(.5);
-            rightFront.setPower(-.5);
-            leftRear.setPower(.5);
-            rightRear.setPower(-.5);
-        }
-
-        //move forward to build plate for .8 sec
-        while (opModeIsActive() &&(runtime.seconds() <= 1.8 ))
-        {
-
-            leftFront.setPower(.5);
-            rightFront.setPower(.5);
-            leftRear.setPower(.5);
-            rightRear.setPower(.5);
-        }
-
-        //grab build plate for .7 sec
-        while (opModeIsActive() && (runtime.seconds() <= 2.5))
-        {
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftRear.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            fGrabLeft.setPosition(90);
-            fGrabRight.setPosition(0);
-
-        }
-
-        //This has the robot move the plate into the appropriate zone - moves backwards for 2.8 sec
-        while (opModeIsActive() && (runtime.seconds() <= 5.3))
-        {
-            leftFront.setPower(-.5);
-            rightFront.setPower(-.5);
-            leftRear.setPower(-.5);
-            rightRear.setPower(-.5);
-        }
-
-        //lift up grabbers for .7 sec
-        while (opModeIsActive() &&  (runtime.seconds() <= 6)) {
+            }
+            //This has the robot move the plate into the appropriate zone
+            while (opModeIsActive() && (runtime.seconds() > 3) && (runtime.seconds() <= 4.9))
+            {
+                leftFront.setPower(-.5);
+                rightFront.setPower(-.5);
+                leftRear.setPower(-.5);
+                rightRear.setPower(-.5);
+            }
+        while (opModeIsActive() && (runtime.seconds() > 4.9 ) && (runtime.seconds() <= 5.65)) {
             fGrabLeft.setPosition(0);
             fGrabRight.setPosition(90);
         }

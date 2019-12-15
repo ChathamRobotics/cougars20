@@ -108,81 +108,81 @@ public class TeleOpMechnum extends LinearOpMode {
                 rightRear.setPower(gamepad1.left_stick_y);
                 //gamepad 1 right joystick left and right = turn
 
-            }
-            //intake system is controlled here
-            if(gamepad2.right_trigger !=0)
-            {
-                intakeMotorLeft.setPower(1);
-                intakeMotorRight.setPower(1);
-            }
-            else if(gamepad2.right_bumper)
-            {
-                intakeMotorLeft.setPower(-1);
-                intakeMotorRight.setPower(-1);
-            }
-            else
-            {
-                intakeMotorLeft.setPower(0);
-                intakeMotorRight.setPower(0);
-            }
+                }
+              //intake system is controlled here
+                if(gamepad2.right_trigger !=0)
+                {
+                    intakeMotorLeft.setPower(1);
+                    intakeMotorRight.setPower(1);
+                }
+                else if(gamepad2.right_bumper)
+                {
+                    intakeMotorLeft.setPower(-1);
+                    intakeMotorRight.setPower(-1);
+                }
+                else
+                {
+                    intakeMotorLeft.setPower(0);
+                    intakeMotorRight.setPower(0);
+                }
 
-            //lift system controlled here
-            if(gamepad2.left_trigger !=0)
-            {
-                liftmotorLeft.setPower(1);
-                liftmotorRight.setPower(1);
-            }
+                //lift system controlled here
+                if(gamepad2.left_trigger !=0)
+                {
+                    liftmotorLeft.setPower(1);
+                    liftmotorRight.setPower(1);
+                }
 
-            else if(gamepad2.left_bumper)
-            {
-                liftmotorLeft.setPower(-1);
-                liftmotorRight.setPower(-1);
-            }
-            else
-            {
-                liftmotorLeft.setPower(0);
-                liftmotorRight.setPower(0);
-            }
+                else if(gamepad2.left_bumper)
+                {
+                    liftmotorLeft.setPower(-1);
+                    liftmotorRight.setPower(-1);
+                }
+                else
+                {
+                    liftmotorLeft.setPower(0);
+                    liftmotorRight.setPower(0);
+                }
 
-            //intake holder movement
-            if(gamepad2.dpad_left) {
-                iHold.setPosition(0);
-                sleep(50);
-            }
-            if(gamepad2.dpad_right) {
-                iHold.setPosition(.5);
-            }
+                //intake holder movement
+                if(gamepad2.dpad_left) {
+                    iHold.setPosition(0);
+                    sleep(50);
+                }
+                if(gamepad2.dpad_right) {
+                    iHold.setPosition(.5);
+                }
 
-            //grabber movement
-            if(gamepad2.dpad_down) {
-                fGrabLeft.setPosition(90);
-                fGrabRight.setPosition(0);
-            }
-            if(gamepad2.dpad_up) {
-                fGrabLeft.setPosition(0);
-                fGrabRight.setPosition(90);
-            }
+                //grabber movement
+                if(gamepad2.dpad_down) {
+                    fGrabLeft.setPosition(90);
+                    fGrabRight.setPosition(0);
+                }
+                if(gamepad2.dpad_up) {
+                    fGrabLeft.setPosition(0);
+                    fGrabRight.setPosition(90);
+                }
 
-            // bar movement
-            if(gamepad2.x) {
-                fBarLeft.setPosition(fBarLeft.getPosition()+.035);
-                fBarRight.setPosition(fBarRight.getPosition()-.035);
-            }
-            if(gamepad2.b) {
-                fBarLeft.setPosition(fBarLeft.getPosition()-.035);
-                fBarRight.setPosition(fBarRight.getPosition()+.035);
-                sleep(1);
-            }
+                // bar movement
+                if(gamepad2.x) {
+                    fBarLeft.setPosition(fBarLeft.getPosition()+.035);
+                    fBarRight.setPosition(fBarRight.getPosition()-.035);
+                }
+                if(gamepad2.b) {
+                    fBarLeft.setPosition(fBarLeft.getPosition()-.035);
+                    fBarRight.setPosition(fBarRight.getPosition()+.035);
+                    sleep(1);
+                }
 
 
 
-            //claw movement
-            if(gamepad2.a) {
-                claw.setPosition(90);
-            }
-            if(gamepad2.y) {
-                claw.setPosition(0);
-            }
+                //claw movement
+                if(gamepad2.a) {
+                    claw.setPosition(90);
+                }
+                if(gamepad2.y) {
+                    claw.setPosition(0);
+                }
 
 
 
