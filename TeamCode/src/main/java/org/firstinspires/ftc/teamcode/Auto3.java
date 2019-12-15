@@ -1,18 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
-import java.lang.*;
 
-@Autonomous(name = "Auto2", group = "LinearOpMode")
+@Autonomous(name = "Auto3", group = "LinearOpMode")
 
-public class Auto2 extends LinearOpMode {
+public class Auto3 extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotorLeft, intakeMotorRight, liftmotorLeft, liftmotorRight;
@@ -81,13 +77,13 @@ public class Auto2 extends LinearOpMode {
             rightRear.setPower(.5);
         }
 
-        //turn right for .25 sec
+        //turn left for .25 sec
         while (opModeIsActive()&&(runtime.seconds() <= 0.5 ))
         {
-            leftFront.setPower(-.5);
-            rightFront.setPower(.5);
-            leftRear.setPower(-.5);
-            rightRear.setPower(.5);
+            leftFront.setPower(.5);
+            rightFront.setPower(-.5);
+            leftRear.setPower(.5);
+            rightRear.setPower(-.5);
         }
 
         //move forward for .25 sec
@@ -100,14 +96,14 @@ public class Auto2 extends LinearOpMode {
             rightRear.setPower(.5);
         }
 
-        //turn left for .25 sec
+        //turn right for .25 sec
         while (opModeIsActive() && (runtime.seconds() <= 1))
         {
 
-            leftFront.setPower(.5);
-            rightFront.setPower(-.5);
-            leftRear.setPower(.5);
-            rightRear.setPower(-.5);
+            leftFront.setPower(-.5);
+            rightFront.setPower(.5);
+            leftRear.setPower(-.5);
+            rightRear.setPower(.5);
         }
 
         //move forward to build plate for .8 sec
@@ -132,7 +128,6 @@ public class Auto2 extends LinearOpMode {
             fGrabRight.setPosition(0);
 
         }
-
         //This has the robot move the plate into the appropriate zone - moves backwards for 2.8 sec
         while (opModeIsActive() && (runtime.seconds() <= 5.3))
         {
