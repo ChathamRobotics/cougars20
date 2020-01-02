@@ -178,10 +178,11 @@ public class TeleOpMechnum extends LinearOpMode {
 
             //claw movement
             if(gamepad2.a) {
-                claw.setPosition(90);
+                claw.setPosition(0);
+
             }
             if(gamepad2.y) {
-                claw.setPosition(0);
+                claw.setPosition(90);
             }
 
 
