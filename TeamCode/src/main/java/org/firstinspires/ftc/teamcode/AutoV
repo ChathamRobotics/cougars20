@@ -19,8 +19,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 /*
  https://www.youtube.com/watch?v=gbcdveLP-Ns
  */
-@Autonomous(name = "AutoV")
-public class VuforiaDemo extends LinearOpMode
+@Autonomous(name = "AutoV", group = "LinearOpMode")
+public class AutoV extends LinearOpMode
 {
     // Variables to be used for later
     private VuforiaLocalizer vuforiaLocalizer;
