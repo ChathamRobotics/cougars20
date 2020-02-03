@@ -173,9 +173,9 @@ public class AutoV extends LinearOpMode {
         }
 
 
-        final float CAMERA_FORWARD_DISPLACEMENT  = 4.0f * mmPerInch;
-        final float CAMERA_VERTICAL_DISPLACEMENT = 8.0f * mmPerInch;
-        final float CAMERA_LEFT_DISPLACEMENT     = 0;
+        final float CAMERA_FORWARD_DISPLACEMENT  = 22.5f * mmPerInch;
+        final float CAMERA_VERTICAL_DISPLACEMENT = 17.0f * mmPerInch;
+        final float CAMERA_LEFT_DISPLACEMENT     = 22.0f * mmPerInch;
 
         OpenGLMatrix robotFromCamera = OpenGLMatrix
                 .translation(CAMERA_FORWARD_DISPLACEMENT, CAMERA_LEFT_DISPLACEMENT, CAMERA_VERTICAL_DISPLACEMENT)
@@ -186,7 +186,7 @@ public class AutoV extends LinearOpMode {
             ((VuforiaTrackableDefaultListener) trackable.getListener()).setPhoneInformation(robotFromCamera, parameters.cameraDirection);
         }
 
-
+        waitForStart();
 
         targetsSkyStone.activate();
 
