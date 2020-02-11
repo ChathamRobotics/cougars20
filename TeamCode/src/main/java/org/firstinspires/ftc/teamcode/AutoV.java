@@ -18,15 +18,44 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.YZX;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.EXTRINSIC;
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
-
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import android.graphics.Bitmap;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.RobotLog;
+import com.qualcomm.robotcore.util.ThreadPool;
+import com.vuforia.Frame;
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.function.Consumer;
+import org.firstinspires.ftc.robotcore.external.function.Continuation;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.matrices.MatrixF;
+import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 
 @Autonomous(name="AutoV", group ="Concept")
 public class AutoV extends LinearOpMode {
+    WebcamName webcamName;
 
-    private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
-    private static final boolean PHONE_IS_PORTRAIT = false  ;
+
+
 
 
     private static final String VUFORIA_KEY =
@@ -46,6 +75,10 @@ public class AutoV extends LinearOpMode {
     private static final float bridgeRotZ = 180;
 
 
+
+
+
+
     private static final float halfField = 72 * mmPerInch;
     private static final float quadField  = 36 * mmPerInch;
 
@@ -59,12 +92,13 @@ public class AutoV extends LinearOpMode {
 
     @Override public void runOpMode() {
 
+        webcamName = hardwareMap.get(WebcamName.class, "Webcam 1");
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
 
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection   = CAMERA_CHOICE;
+        parameters.cameraName = webcamName;
 
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
@@ -161,21 +195,12 @@ public class AutoV extends LinearOpMode {
                 .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));
 
 
-        if (CAMERA_CHOICE == BACK) {
-            phoneYRotate = -90;
-        } else {
-            phoneYRotate = 90;
-        }
 
 
-        if (PHONE_IS_PORTRAIT) {
-            phoneXRotate = 90 ;
-        }
 
-
-        final float CAMERA_FORWARD_DISPLACEMENT  = 22.5f * mmPerInch;
-        final float CAMERA_VERTICAL_DISPLACEMENT = 17.0f * mmPerInch;
-        final float CAMERA_LEFT_DISPLACEMENT     = 22.0f * mmPerInch;
+        final float CAMERA_FORWARD_DISPLACEMENT  = 8.75f * mmPerInch;
+        final float CAMERA_VERTICAL_DISPLACEMENT = 11.0f * mmPerInch;
+        final float CAMERA_LEFT_DISPLACEMENT     = 5.75f * mmPerInch;
 
         OpenGLMatrix robotFromCamera = OpenGLMatrix
                 .translation(CAMERA_FORWARD_DISPLACEMENT, CAMERA_LEFT_DISPLACEMENT, CAMERA_VERTICAL_DISPLACEMENT)
@@ -191,11 +216,9 @@ public class AutoV extends LinearOpMode {
         targetsSkyStone.activate();
 
 
-        com.vuforia.CameraDevice.getInstance().setFlashTorchMode(true);
 
 
-        com.vuforia.CameraDevice.getInstance().setField("opti-zoom", "opti-zoom-on");
-        com.vuforia.CameraDevice.getInstance().setField("zoom", "30");
+
 
         while (!isStopRequested()) {
 
@@ -246,6 +269,7 @@ public class AutoV extends LinearOpMode {
             telemetry.addData("Skystone Position", positionSkystone);
             telemetry.update();
         }
+
 
 
         targetsSkyStone.deactivate();

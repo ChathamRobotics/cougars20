@@ -78,7 +78,7 @@ public class Auto3 extends LinearOpMode {
         }
 
         //turn right for .25 sec
-        while (opModeIsActive()&&(runtime.seconds() <= 0.6 ))
+        while (opModeIsActive()&&(runtime.seconds() <= 0.8 ))
         {
             leftFront.setPower(.5);
             rightFront.setPower(-.5);
@@ -86,8 +86,9 @@ public class Auto3 extends LinearOpMode {
             rightRear.setPower(-.5);
         }
 
+        //.7
         //move forward for .25 sec
-        while (opModeIsActive() && (runtime.seconds() <= 0.95 ))
+        while (opModeIsActive() && (runtime.seconds() <= 1.65 ))
         {
 
             leftFront.setPower(.5);
@@ -97,7 +98,7 @@ public class Auto3 extends LinearOpMode {
         }
 
         //turn left for .25 sec
-        while (opModeIsActive() && (runtime.seconds() <= 1.2))
+        while (opModeIsActive() && (runtime.seconds() <= 2.2))
         {
 
             leftFront.setPower(-.5);
@@ -107,7 +108,7 @@ public class Auto3 extends LinearOpMode {
         }
 
         //move forward to build plate for .8 sec
-        while (opModeIsActive() &&(runtime.seconds() <= 2 ))
+        while (opModeIsActive() &&(runtime.seconds() <= 4.2 ))
         {
 
             leftFront.setPower(.5);
@@ -117,7 +118,7 @@ public class Auto3 extends LinearOpMode {
         }
 
         //grab build plate for .8 sec
-        while (opModeIsActive() && (runtime.seconds() <= 2.8))
+        while (opModeIsActive() && (runtime.seconds() <= 5))
         {
             leftFront.setPower(0);
             rightFront.setPower(0);
@@ -128,16 +129,16 @@ public class Auto3 extends LinearOpMode {
             fGrabRight.setPosition(0);
 
         }
-
+//1.7
         //This has the robot move the plate into the appropriate zone - moves backwards for 2.8 sec
-        while (opModeIsActive() && (runtime.seconds() <= 4.5))
+        while (opModeIsActive() && (runtime.seconds() <= 6.2))
         {
             leftFront.setPower(-.5);
             rightFront.setPower(-.5);
             leftRear.setPower(-.5);
             rightRear.setPower(-.5);
         }
-        while (opModeIsActive() && (runtime.seconds() <= 5.8))
+        while (opModeIsActive() && (runtime.seconds() <= 7.5))
         {
             leftFront.setPower(.5);
             rightFront.setPower(-.5);
@@ -146,18 +147,18 @@ public class Auto3 extends LinearOpMode {
         }
 
         //lift up grabbers for .7 sec
-        while (opModeIsActive() &&  (runtime.seconds() <= 6)) {
+        while (opModeIsActive() &&  (runtime.seconds() <= 8.1)) {
             fGrabLeft.setPosition(0);
             fGrabRight.setPosition(90);
         }
-        while (opModeIsActive() && (runtime.seconds() <= 6.4))
+        while (opModeIsActive() && (runtime.seconds() <= 8.1))
         {
             leftFront.setPower(.5);
             rightFront.setPower(-.5);
             leftRear.setPower(.5);
             rightRear.setPower(-.5);
         }
-        while (opModeIsActive() && (runtime.seconds() <= 7.7)) {
+        while (opModeIsActive() && (runtime.seconds() <= 9.4)) {
             leftFront.setPower(-.5);
             rightFront.setPower(-.5);
             leftRear.setPower(-.5);
