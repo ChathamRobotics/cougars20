@@ -89,15 +89,15 @@ public class TeleOpMechnum extends LinearOpMode {
 
                 //strafe using gamepad 1 triggers.
             } else if (gamepad1.right_trigger != 0) {
-                leftFront.setPower(-1);
-                rightFront.setPower(1);
-                leftRear.setPower(1);
-                rightRear.setPower(-1);
+                leftFront.setPower(-0.5);
+                rightFront.setPower(0.5);
+                leftRear.setPower(0.5);
+                rightRear.setPower(-0.75);
             } else if (gamepad1.left_trigger != 0) {
-                leftFront.setPower(1);
-                rightFront.setPower(-1);
-                leftRear.setPower(-1);
-                rightRear.setPower(1);
+                leftFront.setPower(0.5);
+                rightFront.setPower(-0.75);
+                leftRear.setPower(-0.5);
+                rightRear.setPower(0.5);
 
             } else {
                 //gamepad 1 lift joystick up and down = drive foward backward

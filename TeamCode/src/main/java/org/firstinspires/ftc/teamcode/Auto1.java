@@ -15,6 +15,7 @@ import java.lang.*;
 public class Auto1 extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
+    private int McEvoyContainer;
     private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotorLeft, intakeMotorRight, liftmotorLeft, liftmotorRight;
     private Servo iHold, fGrabLeft, fGrabRight, claw, fBarLeft, fBarRight;
     //right trigger up
