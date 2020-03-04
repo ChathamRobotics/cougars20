@@ -89,8 +89,10 @@ public class AutoV extends LinearOpMode {
 
     @Override public void runOpMode() throws InterruptedException
     {
+        
         telemetry.addData("init","init");
         telemetry.update();
+
 
         //wheel motors hardware mapping
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
@@ -282,6 +284,11 @@ public class AutoV extends LinearOpMode {
             }
 
 
+
+
+
+
+
             String positionSkystone = "";
             if (targetVisible) {
 
@@ -292,16 +299,12 @@ public class AutoV extends LinearOpMode {
                 double xPosition = translation.get(0);
                 if(xPosition < -10){
                     positionSkystone = "left";
-                    fGrabLeft.setPosition(0);
-                    fGrabRight.setPosition(90);
                     leftFront.setPower(.5);
-                    rightFront.setPower(.5);
+                    rightFront.setPower(-.5);
                     leftRear.setPower(.5);
-                    rightRear.setPower(.5);
+                    rightRear.setPower(-.5);
                 }else{
                     positionSkystone = "center";
-                    fGrabLeft.setPosition(0);
-                    fGrabRight.setPosition(90);
                     leftFront.setPower(.5);
                     rightFront.setPower(.5);
                     leftRear.setPower(.5);

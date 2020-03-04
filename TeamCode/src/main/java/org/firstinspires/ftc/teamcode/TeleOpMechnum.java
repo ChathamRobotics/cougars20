@@ -112,7 +112,7 @@ public class TeleOpMechnum extends LinearOpMode {
             //intake system is controlled here
             if(gamepad2.right_trigger !=0)
             {
-                intakeMotorLeft.setPower(1);
+                intakeMotorLeft.setPower(0.8);
                 intakeMotorRight.setPower(1);
             }
             else if(gamepad2.right_bumper)
@@ -178,11 +178,14 @@ public class TeleOpMechnum extends LinearOpMode {
 
             //claw movement
             if(gamepad2.a) {
-                claw.setPosition(0);
+                claw.setPosition(1);
 
             }
             if(gamepad2.y) {
-                claw.setPosition(90);
+                claw.setPosition(0.2);
+            }
+            if (gamepad2.back){
+                claw.setPosition(0);
             }
 
 
