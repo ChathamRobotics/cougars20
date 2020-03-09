@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -74,7 +76,8 @@ public class AutoVI extends LinearOpMode {
     private static final float mmPerInch        = 25.4f;
 
 
-
+    private DcMotor leftFront, rightFront, leftRear, rightRear, intakeMotorLeft, intakeMotorRight, liftmotorLeft, liftmotorRight;
+    private Servo iHold, fGrabLeft, fGrabRight, claw, fBarLeft, fBarRight;
 
 
     private VuforiaLocalizer vuforia = null;
@@ -89,6 +92,40 @@ public class AutoVI extends LinearOpMode {
 
     @Override public void runOpMode() {
 
+
+        telemetry.addData("init","init");
+        telemetry.update();
+
+
+        //wheel motors hardware mapping
+        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
+        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        rightFront.setDirection(DcMotor.Direction.REVERSE);
+        leftRear = hardwareMap.get(DcMotor.class, "leftRear");
+        rightRear = hardwareMap.get(DcMotor.class, "rightRear");
+        leftRear.setDirection(DcMotor.Direction.FORWARD);
+        rightRear.setDirection(DcMotor.Direction.REVERSE);
+
+        //Intake hardware mapping
+        intakeMotorLeft = hardwareMap.get(DcMotor.class, "intakeMotorLeft");
+        intakeMotorRight = hardwareMap.get(DcMotor.class, "intakeMotorRight");
+        intakeMotorLeft.setDirection(DcMotor.Direction.FORWARD);
+        intakeMotorRight.setDirection(DcMotor.Direction.REVERSE);
+
+        //Lift hardware mapping
+        liftmotorLeft = hardwareMap.get(DcMotor.class, "liftmotorLeft");
+        liftmotorRight = hardwareMap.get(DcMotor.class, "liftmotorRight");
+        liftmotorLeft.setDirection(DcMotor.Direction.REVERSE);
+        liftmotorRight.setDirection(DcMotor.Direction.FORWARD);
+
+        //Servo hardware mapping
+        iHold = hardwareMap.get(Servo.class, "iHold");
+        fGrabLeft = hardwareMap.get(Servo.class, "fGrabLeft");
+        fGrabRight = hardwareMap.get(Servo.class, "fGrabRight");
+        claw = hardwareMap.get(Servo.class, "claw");
+        fBarLeft = hardwareMap.get(Servo.class, "fBarLeft");
+        fBarRight = hardwareMap.get(Servo.class, "fBarRight");
 
 
         webcamName = hardwareMap.get(WebcamName.class, "Webcam 1");
